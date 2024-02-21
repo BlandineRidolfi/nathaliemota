@@ -7,7 +7,7 @@
             array(
                 'theme_location' => 'menu-2',
                 'container'      => 'false',
-                'menu_class'     => 'cssFooter',
+                'menu_class'     => 'footerMenu',
             )
         );
         ?>

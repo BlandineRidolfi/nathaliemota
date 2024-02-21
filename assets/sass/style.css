@@ -1,0 +1,44 @@
+/* CSS HEADER */
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-inline: 145px;
+  background: white;
+  height: 80px;
+  box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
+}
+header .siteNavigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+header .siteNavigation .siteNavigation__logo img {
+  width: 215px;
+  height: 15px;
+}
+header .siteNavigation .siteNavigation__menu {
+  display: flex;
+  align-items: center;
+}
+header .siteNavigation .siteNavigation__menu .navMenu {
+  display: flex;
+  gap: 30px;
+  list-style-type: none;
+}
+header .siteNavigation .siteNavigation__menu .navMenu li {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+header .siteNavigation .siteNavigation__menu .navMenu li a {
+  color: black;
+  text-decoration: none;
+}
+header .siteNavigation .siteNavigation__menu .navMenu li a:hover {
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=style.css.map */

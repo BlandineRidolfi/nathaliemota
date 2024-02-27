@@ -3,7 +3,59 @@
 @import "partiels/header";
 @import "partiels/footer";
 @import "partiels/modale.scss";
+@import "partiels/single-photo";
+@import "partiels/block-photo";
 
 // Important des polices Google Font
 
 @import "partiels/googleFont";
+
+/* STYLES GENERAUX */
+
+
+
+body {
+    max-width: 1440px;
+    font-family: "space_monoregular";
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin: auto;
+    ul {
+        list-style-type: none;
+    }
+
+     a {  color: black;
+        text-decoration: none;
+        font-family: space_monoregular;
+        text-transform: uppercase;
+    }
+}
+
+h2 {    
+    font-family: space_monoregular;
+    font-size: 60px;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 58px;
+    @media (max-width:1140px) {
+        font-size: 40px;
+        width: 415px;
+    }
+}
+
+h3 {
+    font-family: space_monoregular;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0.1em;
+    text-align: left;
+}
+
+p {
+    margin-bottom: 15px;
+    font-family: PoppinsRegular;
+    font-size: 14px;
+}

@@ -52,18 +52,22 @@
       h2,
       h3 {
         display: block;
+        font-family: PoppinsRegular;
+        font-size: 14px;
+        font-weight: 500;
+        font-style: normal;
+        text-transform: uppercase;
+        position: absolute;
+        color: white;
+        
       }
     }
   
     /* Styles pour les titres dans l'overlay */
     h2 {
-      text-transform: uppercase;
-      position: absolute;
-      left: 10px;
-      top: 454px;
-      color: white;
-      font-family: PoppinsRegular;
-      font-size: 14px;
+      
+      left: 15px;
+      top: 435px;
       display: none;
   
       /* Ajustements responsives */
@@ -74,14 +78,12 @@
     }
   
     h3 {
-      text-transform: uppercase;
-      position: absolute;
-      left: 488px;
-      top: 452px;
-      color: white;
-      font-family: PoppinsRegular;
-      font-size: 14px;
+     
+      left: 490px;
+      top: 450px;
       display: none;
+     
+     
   
       /* Ajustements responsives */
       @media screen and (max-width: 765px) {

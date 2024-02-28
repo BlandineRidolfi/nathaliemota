@@ -1,4 +1,5 @@
-/* CSS pour single-photo.php */
+/* SCSS pour single-photo.php */
+
 
 .photos__gallery {
     display: flex;
@@ -19,7 +20,7 @@
     object-fit: cover;
     width: 50%;
     height: 100%;
-    position: relative; /* Ajout de cette ligne */
+    position: relative;
 }
 
 .singlePhotoOverlay {
@@ -36,21 +37,21 @@
     opacity: 0;
     transition: background-color 0.3s, opacity 0.3s;
     cursor: pointer;
-}
 
-.photo__container:hover .singlePhotoOverlay {
-    opacity: 0.8;
-    background-color: rgba(0, 0, 0, 0.8);
-}
+    .photo__container:hover & {
+        opacity: 0.8;
+        background-color: rgba(0, 0, 0, 0.8);
 
-.singlePhotoOverlay:hover .icon__fullscreen {
-    display: block;
+        .icon__fullscreen {
+            display: block;
+        }
+    }
 }
 
 .singlePhotoOverlay .icon__fullscreen {
     display: none;
     position: absolute;
-    left: 92%;    
+    left: 92%;
     top: 2%;
     width: 34px;
     height: 34px;
@@ -75,25 +76,25 @@
     margin: auto;
 }
 
-.photo__info  {
+.photo__info {
     width: 48%;
     text-align: left;
     border-bottom: solid black 1px;
     padding-bottom: 30px;
-}
 
-.photo__info h2 {
-    margin: 20px 0;
-    width: 420px;
-}
+    h2 {
+        margin: 20px 0;
+        width: 420px;
+    }
 
-.photo__info p {
-    font-family: space_monoregular;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 21px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    p {
+        font-family: space_monoregular;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
 }
 
 .photo__taxo {
@@ -139,59 +140,62 @@
     font-size: 12px;
     border-radius: 2px;
     margin-right: 23px;
-}
 
-#contact__button:hover {
-    cursor: pointer;
-    background-color: black;
-    color: white;
-    transition: background-color 0.6s ease-in, color 0.6s ease-in;
+    &:hover {
+        background-color: black;
+        color: white;
+        transition: background-color 0.6s ease-in, color 0.6s ease-in;
+    }
 }
 
 /* Styles pour l'affichage des vignettes au survol des flèches */
+
 .navPhotos {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     width: 50%;
-    height: 118px;    
+    height: 118px;
 }
 
 .navArrow {
     display: flex;
-    align-items: flex-end;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     position: relative;
-    width: 81px;    
-    margin-bottom: 16px;
+    width: 81px;
+    margin-bottom: 10px;
     height: 118px;
+    right: 81px;
+
+
+
+
+    .arrow {
+        width: 25px;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+        display: inline-block;
+        transition: opacity 0.5s ease, cursor 0.5s ease; /* Ajout de la transition */
+        cursor: pointer;
+        margin: 0 5px; /* Ajout d'une marge de 5px de chaque côté */
+
+        &:hover + .minaturePhoto,
+        &:hover + .minaturePhoto-left,
+        &:hover + .minaturePhoto-right,
+        &:focus + .minaturePhoto,
+        &:focus + .minaturePhoto-left,
+        &:focus + .minaturePhoto-right {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.5s ease; /* Ajout de la transition */
+        }
+    }
 }
 
-.navArrow .arrow {
-    width: 25px;
-    height: auto;
-    background-size: cover;
-    background-position: center;
-    display: inline-block;
-    transition: opacity 0.5s ease; /* Ajout de la transition */
-    cursor: pointer;
-}
-
-/* Au survol de la flèche, faire apparaître la vignette */
-.navArrow .arrow:hover + .minaturePhoto,
-.navArrow .arrow:hover + .minaturePhoto-left,
-.navArrow .arrow:hover + .minaturePhoto-right {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.5s ease; /* Ajout de la transition */
-}
-
-.minaturePhoto-content {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
+.minaturePhoto-content,
 .minaturePhoto,
 .minaturePhoto-left,
 .minaturePhoto-right {
@@ -200,39 +204,42 @@
     position: relative;
     height: 71px;
     width: 81px;
-    top: 8px;
+   
     transition: visibility 0.5s ease, opacity 0.5s ease;
+
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &:hover,
+    &:focus {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
-.minaturePhoto a,
-.minaturePhoto-left a,
-.minaturePhoto-right a {
-    display: block;
-    width: 100%;
-    height: 100%;
+.arrowContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 13px;
 }
 
-.minaturePhoto a img,
-.minaturePhoto-left a img,
-.minaturePhoto-right a img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
-/* Au survol de la vignette, garder la visibilité */
-.arrow:hover + .minaturePhoto,
-.arrow:hover + .minaturePhoto-left,
-.arrow:hover + .minaturePhoto-right {
-    visibility: visible;
-    opacity: 1;
-}
+
 
 .interested {
     font-family: space_monoregular;
     font-size: 14px;
 }
-  
+
 .photoNotFound {
     font-family: PoppinsRegular;
     font-size: 20px;

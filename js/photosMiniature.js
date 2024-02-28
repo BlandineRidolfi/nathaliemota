@@ -1,26 +1,21 @@
-
-/* Affichage Miniature */
-console.log("Affichage Miniature : son js est chargé");
+console.log("Affichage Miniature : le js de la miniature est chargé");
 
 $(document).ready(function() {
-    const miniaturePhoto = $('#miniaturePhoto');
-
-    $('.arrow__left, .arrow__right').hover(
-        function() {
-            miniaturePhoto.css({
-                visibility: 'visible',
-                opacity: 1
-            }).html(`<a href="${$(this).data('target-url')}">
+    $('.arrow__left, .arrow__right').mouseenter(function() {
+        $(this).next().css({
+            visibility: 'visible',
+            opacity: 1
+        }).html(`<a href="${$(this).data('target-url')}">
                         <img src="${$(this).data('thumbnail-url')}" alt="${$(this).hasClass('arrow__left') ? 'Photo précédente' : 'Photo suivante'}">
                     </a>`);
-        },
-        function() {
-            miniaturePhoto.css({
-                visibility: 'hidden',
-                opacity: 0
-            });
-        }
-    );
+    });
+
+    $('.arrowContainer').mouseleave(function() {
+        $(this).find('.minaturePhoto').css({
+            visibility: 'hidden',
+            opacity: 0
+        });
+    });
 
     $('.arrow__left, .arrow__right').click(function() {
         window.location.href = $(this).data('target-url');

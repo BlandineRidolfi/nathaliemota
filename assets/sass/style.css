@@ -837,7 +837,7 @@ header .siteNavigation .siteNavigation__menu .navMenu li a:hover {
     left: 267px;
   }
 }
-@media screen and (max-width: 765px) {
+@media screen and (max-width: 375px) {
   .overlay .icon-fullscreen {
     left: 215px;
   }

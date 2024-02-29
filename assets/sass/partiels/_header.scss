@@ -54,8 +54,19 @@ header  {
     }
 }
 
+/** BURGER **/
+
 @media screen and (max-width: 768px) {
+    #wpadminbar {
+        display: none;
+    }
+    
     header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
         padding-inline: 16px;
 
         &.open {
@@ -174,8 +185,6 @@ header  {
         max-height: 0;
     }
 }
-
-
 
 /* Tablette */
 @media only screen and (min-width: 768px) and (max-width: 960px){

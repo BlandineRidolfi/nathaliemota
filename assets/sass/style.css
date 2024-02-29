@@ -44,8 +44,17 @@ header .siteNavigation .siteNavigation__menu .navMenu li a:hover {
   font-weight: 700;
 }
 
+/** BURGER **/
 @media screen and (max-width: 768px) {
+  #wpadminbar {
+    display: none;
+  }
   header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
     padding-inline: 16px;
   }
   header.open {

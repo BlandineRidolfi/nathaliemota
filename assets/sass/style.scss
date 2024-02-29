@@ -21,6 +21,9 @@ body {
     line-height: 1.6;
     color: #333;
     margin: auto;
+    //@media screen and (max-width: 460px) {
+	//	margin: 56px
+    //}
     ul {
         list-style-type: none;
     }

@@ -40,7 +40,7 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
                 <h2><?php echo esc_html(get_the_title()); ?></h2>
             
                 <div class="photo__taxo">
-                    <p>RÉFÉRENCE    : <?php echo esc_html($refUppercase); ?></p>
+                    <p>RÉFÉRENCE    : <span id="single-reference"><?php echo esc_html($refUppercase); ?></p>
                     <p>CATÉGORIE    : <?php echo esc_html($categorie_name); ?></p>
                     <p>FORMAT    : <?php echo esc_html($FORMATS); ?></p>
                     <p>TYPE    : <?php echo esc_html(get_field('type')); ?></p>
@@ -55,7 +55,7 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
         <div class="contact">
             <p class="interested">Cette photo vous intéresse ?</p>            
             <!-- Bouton CTA avec référence -->
-            <button id="contact__button" data-reference="<?php echo esc_attr($reference); ?>">Contact</button>
+            <button class="modale-contact" id="contact__button" data-reference="<?php echo $refUppercase; ?>">Contact</button>
         </div>
 
         <div class="navPhotos">
@@ -87,7 +87,7 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
     </div>
 </section>
 
-<section>
+<section class="suggestions">
     <div class="title__suggestion">
         <h3>VOUS AIMEREZ AUSSI</h3>
     </div>

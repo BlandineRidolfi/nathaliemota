@@ -17,6 +17,13 @@
 					<img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/logo.png'; ?>" alt="Logo">
 				</a>
 			</div>
+
+			<!-- Menu burger -->
+			<div class="burgerMenu">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</div>
 								
 			<div class="siteNavigation__menu">
 	

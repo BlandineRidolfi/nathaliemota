@@ -843,6 +843,75 @@ header .siteNavigation .siteNavigation__menu .navMenu li a:hover {
   }
 }
 
+/** STYLE CSS DU HERO HEADER **/
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 900px;
+}
+@media screen and (max-width: 770px) {
+  .hero {
+    height: 250px;
+  }
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  top: 3px;
+  animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 85%;
+  height: 10%;
+  font-family: "space_monobold_italic", sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 6vw;
+  line-height: 10vh;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 3px #ffffff;
+  -webkit-text-fill-color: transparent;
+  z-index: 1;
+  animation: fadeOut 2s;
+}
+@media screen and (max-width: 770px) {
+  h1 {
+    -webkit-text-stroke: 1px #ffffff;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 @font-face {
   font-family: "PoppinsBold";
   src: url("../fonts/poppins-bold-webfont.woff2") format("woff2"), url("../fonts/poppins-bold-webfont.woff") format("woff");

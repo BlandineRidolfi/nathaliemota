@@ -14,6 +14,7 @@
 		<?php get_template_part('template-parts/photo-container'); ?>
 	</section>
 
+    
 </main>
 
 <?php get_footer();?>

@@ -14,22 +14,12 @@ function theme_enqueue_styles_and_scripts() {
     // Affichage des images miniature (script JQuery)
     wp_enqueue_script('photosMiniature', get_stylesheet_directory_uri() . '/js/photosMiniature.js', array('jquery'), '1.0.0', true);
 
-    // Chargement de plus d'images avec Ajax (script JQuery)
-    wp_enqueue_script('Ajax-charge-plus-images', get_stylesheet_directory_uri() . '/js/load-more.js', array('jquery'), '1.0.0', true);
+    
 
     // Gestion du Menu Burger (script JQuery)
     wp_enqueue_script('menuBurgerJS', get_stylesheet_directory_uri() . '/js/menuBurger.js', array('jquery'), '1.0.0', true);
 
-    // Localisation de la variable ajaxloadmore pour le script principal
-    wp_localize_script('Ajax-charge-plus-images', 'ajaxloadmore', array(
-        'ajaxurl' => admin_url('admin-ajax.php'),
-        'query_vars' => json_encode(array(
-            'post_type' => 'photo',
-            'posts_per_page' => 8,
-            'orderby' => 'date',
-            'order' => 'ASC',
-        ))
-    ));
+    
 }
 
 // Ajout d'une fonction permettant de gérer les menus depuis WP
@@ -43,46 +33,69 @@ function enregistrement_nav_menus() {
 }
 add_action( 'after_setup_theme', 'enregistrement_nav_menus' );
 
-// Chargement photos Ajax load more
-function load_more_photos($args) {
-    $paged = $_POST['page'] + 1;
-    $query_vars = json_decode(stripslashes($_POST['query']), true);
-    $query_vars['paged'] = $paged;
-    $query_vars['posts_per_page'] = 12;
-    $query_vars['orderby'] = 'date';
+// LOAD-MORE PHOTOS 
 
-    $photos = new WP_Query($query_vars);
-    if ($photos->have_posts()) {
-        ob_start();
-        while ($photos->have_posts()) {
-            $photos->the_post();
-            get_template_part('template-parts/block-photo', null);
-        }
-        wp_reset_postdata();
-
-        $output = ob_get_clean(); // Get the buffer and clean it
-        echo $output; // Echo the output
-    } else {
-        ob_clean(); // Clean any previous output
-        echo 'no_posts';
-    }
-    die();
-}
-
-add_action('wp_ajax_nopriv_load_more', function () {
-    load_more_photos(json_encode(array(
-        'post_type' => 'photo',
-        'posts_per_page' => 8,
-        'orderby' => 'date',
-        'order' => 'ASC',
-    )));
-});
-
-add_action('wp_ajax_load_more', function () {
-    load_more_photos(json_encode(array(
-        'post_type' => 'photo',
-        'posts_per_page' => 8,
-        'orderby' => 'date',
-        'order' => 'ASC',
-    )));
-});
+  // Ajout du script load-more-photos.js et filtre.js avec wp_localize_script pour passer des paramètres AJAX
+  function enqueue_load_more_photos_script()
+  {
+      wp_enqueue_script('load-more', get_stylesheet_directory_uri() . '/js/load-more.js', array('jquery'), null, true);
+  
+      //wp_enqueue_script('filtres', get_stylesheet_directory_uri() . '/js/filtres.js', array('jquery'), null, true);
+  
+      // Utilisez wp_localize_script pour passer des paramètres à votre script
+      wp_localize_script('load-more', 'ajax_params', array(
+          'ajax_url' => admin_url('admin-ajax.php'),
+      ));
+  
+      wp_localize_script('filtre', 'ajax_params', array(
+          'ajax_url' => admin_url('admin-ajax.php'),
+      ));
+  }
+  add_action('wp_enqueue_scripts', 'enqueue_load_more_photos_script');
+  
+  // Fonction pour charger plus de photos via AJAX
+  function load_more_photos()
+  {
+      // Récupère le numéro de page à partir des données POST
+      $page = $_POST['page'];
+  
+      // Arguments de la requête pour récupérer les photos
+      $args = array(
+          'post_type'      => 'photo',     // Type de publication : photo
+          'posts_per_page' => 8,          // Nombre de photos par page (-1 pour toutes)
+          'orderby'        => 'date',      // Tri aléatoire
+          'order'          => 'DESC',       // Ordre ascendant
+          /*'paged'          => $page,       // Numéro de page*/
+          'offset' => $_POST[
+              'offset'
+          ]
+      );
+  
+      // Exécute la requête WP_Query avec les arguments
+      $photo_block = new WP_Query($args);
+  
+      // Vérifie s'il y a des photos dans la requête
+      if ($photo_block->have_posts()) :
+          // Boucle à travers les photos
+          while ($photo_block->have_posts()) :
+              $photo_block->the_post();
+              // Inclut la partie du modèle pour afficher un bloc de photo
+              get_template_part('template-parts/block-photo', get_post_format());
+          endwhile;
+  
+          // Réinitialise les données post
+          wp_reset_postdata();
+      else :
+          // Aucune photo trouvée
+          echo 'Aucune photo trouvée.';
+      
+      endif;
+      
+      // Termine l'exécution de la fonction
+      die();
+  }
+  
+  // Ajoute l'action AJAX pour les utilisateurs connectés
+  add_action('wp_ajax_load_more_photos', 'load_more_photos');
+  // Ajoute l'action AJAX pour les utilisateurs non connectés
+  add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');

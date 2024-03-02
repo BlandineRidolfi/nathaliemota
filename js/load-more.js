@@ -1,43 +1,39 @@
-// Script permettant de charger + d'images avec AJAX ce qui permet de ne pas recharger la page lors de la requète
-console.log("Chargement de plus d'images avec Ajax : son js est chargé");
-
-(function($) {
-    $('#viewMore').click(function() {
-        var button = $(this),
-            data = {
-                'action': 'load_more',
-                'query': ajaxloadmore ? ajaxloadmore.query_vars : null, // Ajout de la vérification
-                'page': button.data('page')
-            };
+// load-more.js
+jQuery(function ($) {
+    // Fonction pour attacher des événements aux images chargées
+function attachEventsToImages() {
+    // Votre logique d'attache d'événements ici
+    console.log('Les photos se chargent au click du bouton charger plus');
+}
+    // Fonction pour gérer le chargement du contenu additionnel
+    function loadMoreContent() {
+        const offset = $("#viewMore").data("offset");
+        const ajaxurl = ajax_params.ajax_url;
 
         $.ajax({
-            url: ajaxloadmore.ajaxurl, // Utilisation de ajaxloadmore.ajaxurl
-            data: data,
-            type: 'POST',
-            beforeSend: function(xhr) {
-                button.text('Chargement...');
+            url: ajaxurl,
+            type: "post",
+            data: {
+                offset: offset,
+                action: "load_more_photos",
             },
-            success: function(data) {
-                console.log('Réponse AJAX reçue :', data);
-            
-                if (data === 'no_posts') {
-                    button.remove();
-                } else if(data) {
-                    try {
-                        // Essayer de créer un objet jQuery à partir de la réponse
-                        var $data = $(data);
-                        button.data('page', button.data('page') + 1);
-                        $('#moreImage').before($data);
-                        button.text('Charger plus');
-                        // Commentez la ligne suivante si vous ne l'utilisez pas réellement
-                        // attachEventsToImages(); 
-                    } catch (error) {
-                        console.error('Erreur lors de la création de l\'objet jQuery :', error);
-                    }
+            success: function (response) {
+                
+
+                if (response == 'Aucune photo trouvée.') {
+                    $("#viewMore").hide();
+                    console.log('Aucune photo trouvée.');
                 } else {
-                    button.text('Plus de photos à charger');
+                    $("#photo__container").append(response);
+                    attachEventsToImages();
+                    $("#viewMore").data("offset", offset + 8);
                 }
-            }
+            },
         });
+    }
+
+    // Utiliser la délégation d'événement sur un parent stable
+    $(document).on("click", "#moreImage #viewMore", function () {
+        loadMoreContent();
     });
-})(jQuery);
+});

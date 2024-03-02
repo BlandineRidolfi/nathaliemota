@@ -1,10 +1,9 @@
 <?php get_header();?>
 
-<main>
 
-    <section id="header">
+    
 		<?php get_template_part('template-parts/hero'); ?>
-	</section>
+	
 
     <section id="filtrePhoto">
 		<?php get_template_part('template-parts/photo-filtre'); ?>
@@ -12,9 +11,14 @@
 
     <section id="photo__container" class="blockCatalogue">
 		<?php get_template_part('template-parts/photo-container'); ?>
+
+		 
 	</section>
 
-    
-</main>
+    <!-- Partie bouton pour charger plus de photos -->
+		 <div id="moreImage">
+        <button id="viewMore" data-offset= "8" data-url="">Charger plus</button>
+    </div>
+
 
 <?php get_footer();?>

@@ -17,7 +17,7 @@ foreach ($taxonomy as $taxonomy_slug => $label) {
         // Ajout des options spécifiques pour la taxonomie "annee"
         if ($taxonomy_slug === 'annee') {
             echo "<option value='date_asc'>A partir des plus récentes</option>";
-echo "<option value='date_desc'>A partir des plus anciennes</option>";
+            echo "<option value='date_desc'>A partir des plus anciennes</option>";
         } else {
             foreach ($terms as $term) {
                 echo "<option value='$term->slug'>$term->name</option>";

@@ -959,6 +959,7 @@ h1 {
 @media screen and (max-width: 770px) {
   #filtrePhoto {
     width: 315px;
+    gap: 5px;
   }
 }
 @media screen and (min-width: 770px) and (max-width: 1140px) {
@@ -1019,29 +1020,66 @@ h1 {
 
 /* Ajouter du CSS pour personnaliser Select2 */
 .select2-container--default .select2-selection--single {
-  border: 1px solid #ced4da; /* Couleur de la bordure */
-  border-radius: 4px; /* Coins arrondis */
+  height: 43px !important;
+  border: 1.3px solid #b8bbc2 !important;
+  border-radius: 8px !important;
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  text-transform: uppercase;
 }
 
-/* Ajouter du CSS pour personnaliser Select2 */
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
   background-color: transparent !important;
   color: #000 !important;
 }
 
 .select2-container--default .select2-results__option:hover {
+  background-color: #FFD6D6 !important;
+  color: white !important;
+}
+
+.select2-container--default .select2-results__option:active {
   background-color: #FE5858 !important;
+  color: white !important;
+}
+
+.select2-container--default .select2-results__option:focus {
+  background-color: #E00000 !important;
   color: white !important;
 }
 
 .select2-container--default .select2-results__option:first-child {
   background-color: #FFD6D6 !important;
   color: #000 !important;
+  display: none;
 }
 
 .select2-container--default .select2-results__option:not(:first-child)[aria-selected=true] {
   background-color: #E00000 !important;
   color: #fff !important;
+}
+
+.select2-container--default .select2-dropdown {
+  top: 26px;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  display: none;
+}
+
+/* Styles pour la sélection unique de Select2 */
+/* Styles pour la largeur de la container Select2 */
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #888 transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  height: 0;
+  left: 50%;
+  margin-left: -4px;
+  margin-top: 4px !important;
+  position: absolute;
+  top: 50%;
+  width: 0;
 }
 
 /* Styles for the lightbox */
@@ -1063,7 +1101,7 @@ h1 {
 /* Close button styles */
 .lightbox .lightboxClose {
   position: absolute;
-  top: 40px;
+  top: 121px;
   right: 18%;
   font-size: 23px;
   cursor: pointer;
@@ -1072,6 +1110,7 @@ h1 {
 @media screen and (max-width: 1140px) {
   .lightbox .lightboxClose {
     right: -8%;
+    top: 100px;
   }
 }
 
@@ -1112,7 +1151,7 @@ h1 {
 
 /* Styles for the previous navigation button */
 .lightbox .lightboxPrevious {
-  left: 12%;
+  left: 13%;
 }
 @media screen and (min-width: 765px) and (max-width: 1140px) {
   .lightbox .lightboxPrevious {
@@ -1129,12 +1168,11 @@ h1 {
   .lightbox .lightboxPrevious {
     right: 0%;
     left: 0%;
-    top: 95%;
+    top: 85%;
   }
 }
 @media screen and (min-width: 200px) and (max-width: 400px) {
   .lightbox .lightboxPrevious {
-    top: 95%;
     left: -11%;
   }
 }
@@ -1157,12 +1195,12 @@ h1 {
 @media screen and (min-width: 400px) and (max-width: 765px) {
   .lightbox .lightboxNext {
     right: 0%;
-    top: 95%;
+    top: 85%;
   }
 }
 @media screen and (min-width: 200px) and (max-width: 400px) {
   .lightbox .lightboxNext {
-    top: 95%;
+    top: 85%;
     right: -8%;
   }
 }
@@ -1200,15 +1238,15 @@ h1 {
   position: absolute;
   text-transform: uppercase;
   z-index: 1;
-  bottom: 110px;
-  left: 482px;
+  bottom: 215px;
+  left: 431px;
   color: #fff;
   width: 170px;
   height: 21px;
 }
 @media screen and (min-width: 250px) and (max-width: 350px) {
   .lightboxReference {
-    bottom: 62px;
+    bottom: 200px;
     left: 2px;
     width: 80px;
     z-index: 1;
@@ -1216,7 +1254,7 @@ h1 {
 }
 @media screen and (min-width: 350px) and (max-width: 400px) {
   .lightboxReference {
-    bottom: 62px;
+    bottom: 200px;
     left: 0px;
     width: 80px;
     z-index: 1;
@@ -1224,7 +1262,7 @@ h1 {
 }
 @media screen and (min-width: 400px) and (max-width: 765px) {
   .lightboxReference {
-    bottom: 80px;
+    bottom: 200px;
     left: 22px;
     width: 80px;
     z-index: 1;
@@ -1258,27 +1296,27 @@ h1 {
   position: absolute;
   text-transform: uppercase;
   z-index: 1;
-  bottom: 110px;
-  right: 482px;
+  bottom: 215px;
+  right: 427px;
   color: #fff;
 }
 @media screen and (min-width: 250px) and (max-width: 350px) {
   .lightboxCategorie {
-    bottom: 62px;
+    bottom: 200px;
     right: 10px;
     z-index: 1;
   }
 }
 @media screen and (min-width: 350px) and (max-width: 400px) {
   .lightboxCategorie {
-    bottom: 62px;
+    bottom: 200px;
     right: 15px;
     z-index: 1;
   }
 }
 @media screen and (min-width: 400px) and (max-width: 765px) {
   .lightboxCategorie {
-    bottom: 80px;
+    bottom: 200px;
     right: 20px;
     z-index: 1;
   }

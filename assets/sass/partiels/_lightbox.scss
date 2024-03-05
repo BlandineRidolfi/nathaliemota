@@ -17,13 +17,14 @@
 /* Close button styles */
 .lightbox .lightboxClose {
   position: absolute;
-  top: 40px;
+  top: 121px;
   right: 18%;
   font-size: 23px;
   cursor: pointer;
   color: #fff;
   @media screen and (max-width: 1140px) {
     right: -8%;
+    top: 100px;
   }
 }
 
@@ -62,7 +63,7 @@
 
 /* Styles for the previous navigation button */
 .lightbox .lightboxPrevious {
-  left: 12%;
+  left: 13%;
 
   @media screen and (min-width: 765px) and (max-width: 1140px) {
     left: -18%;
@@ -78,11 +79,10 @@
   @media screen and (min-width: 400px) and (max-width: 765px) {
     right: 0%;
     left: 0%;
-    top: 95%;
+    top: 85%;
   }
 
   @media screen and (min-width: 200px) and (max-width: 400px) {
-    top: 95%;
     left: -11%;
   }
 }
@@ -104,11 +104,11 @@
 
   @media screen and (min-width: 400px) and (max-width: 765px) {
     right: 0%;
-    top: 95%;
+    top: 85%;
   }
 
   @media screen and (min-width: 200px) and (max-width: 400px) {
-    top: 95%;
+    top: 85%;
     right: -8%;
   }
 }
@@ -145,29 +145,29 @@
   text-transform: uppercase;
 
   z-index: 1;
-  bottom: 110px;
-  left: 482px;
+  bottom: 215px;
+  left: 431px;
   color: #fff;
 
   width: 170px;
   height: 21px;
 
   @media screen and (min-width: 250px) and (max-width: 350px) {
-    bottom: 62px;
+    bottom: 200px;
     left: 2px;
     width: 80px;
     z-index: 1;
   }
 
   @media screen and (min-width: 350px) and (max-width: 400px) {
-    bottom: 62px;
+    bottom: 200px;
     left: 0px;
     width: 80px;
     z-index: 1;
   }
 
   @media screen and (min-width: 400px) and (max-width: 765px) {
-    bottom: 80px;
+    bottom: 200px;
     left: 22px;
     width: 80px;
     z-index: 1;
@@ -200,24 +200,24 @@
   text-transform: uppercase;
   z-index: 1;
 
-  bottom: 110px;
-  right: 482px;
+  bottom: 215px;
+  right: 427px;
   color: #fff;
 
   @media screen and (min-width: 250px) and (max-width: 350px) {
-    bottom: 62px;
+    bottom: 200px;
     right: 10px;
     z-index: 1;
   }
 
   @media screen and (min-width: 350px) and (max-width: 400px) {
-    bottom: 62px;
+    bottom: 200px;
     right: 15px;
     z-index: 1;
   }
 
   @media screen and (min-width: 400px) and (max-width: 765px) {
-    bottom: 80px;
+    bottom: 200px;
     right: 20px;
     z-index: 1;
   }

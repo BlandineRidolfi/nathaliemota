@@ -1,5 +1,5 @@
 // Ce message s'affichera dans la console lorsque le script JS sera chargé
-console.log("Affichage Miniature : le js de la miniature est chargé");
+console.log("Le JS de l'affichage des miniature s'est correctement chargé");
 
 $(document).ready(function() {
     // Gestion de l'événement 'mouseenter' sur les flèches gauche et droite

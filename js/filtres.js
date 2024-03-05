@@ -1,10 +1,8 @@
-
 /* les Filtres */
-console.log("les Filtres : son js est chargé");
+console.log("Le JS des filtres s'est correctement chargé");
 
-(function($){
-
-    function fetchFilteredPhotos(){
+(function ($) {
+    function fetchFilteredPhotos() {
         var filter = {
             'categorie': $('#categorie').val(),
             'format': $('#format').val(),
@@ -18,19 +16,21 @@ console.log("les Filtres : son js est chargé");
                 'filter': filter
             },
             type: 'POST',
-            beforeSend: function(){
+            beforeSend: function () {
                 $('#photo__container').html('<div class="loading">Chargement en cours..</div>');
             },
-            success: function(data) {
-                $('#photo__container').html(data);
+            success: function (data) {
+                // Vide le contenu avant d'ajouter de nouvelles données
+                $('#photo__container').empty().html(data);
                 attachEventsToImages();
-                setTimeout(function() {
-                document.getElementById('photo__container').scrollIntoView();
-            }, 0);
-        }})
+                setTimeout(function () {
+                    document.getElementById('photo__container').scrollIntoView();
+                }, 0);
+            }
+        });
     }
 
-    $('#filtrePhoto select').on('change', function(event){
+    $('#filtrePhoto select').on('change', function (event) {
         event.preventDefault();
         fetchFilteredPhotos();
     });

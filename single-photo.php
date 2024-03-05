@@ -30,7 +30,8 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
             <div class="photo__container">
                 <img src="<?php echo esc_url($photoId); ?>" alt="<?php the_title_attribute(); ?>">
                 <div class="singlePhotoOverlay">
-                    <div class="icon__fullscreen" data-reference="<?php echo esc_attr($reference); ?>" data-full="<?php echo esc_url($photo_url); ?>" data-category="<?php echo esc_attr($categorie_name); ?>">
+                   
+                     <div class="icon__fullscreen" data-reference="<?php echo esc_attr($reference); ?>" data-full="<?php echo esc_url($photo_url); ?>" data-category="<?php echo esc_attr($categorie_name); ?>">
                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/fullscreen.svg" alt="Icone fullscreen">
                     </div>
                 </div>

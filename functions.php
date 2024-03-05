@@ -75,7 +75,6 @@ add_action( 'after_setup_theme', 'enregistrement_nav_menus' );
           'posts_per_page' => 8,          // Nombre de photos par page (-1 pour toutes)
           'orderby'        => 'date',      // Tri aléatoire
           'order'          => 'DESC',       // Ordre ascendant
-          /*'paged'          => $page,       // Numéro de page*/
           'offset' => $_POST[
               'offset'
           ]

@@ -1,4 +1,5 @@
-
+// Ce message s'affichera dans la console lorsque le script JS sera chargé
+console.log("Le JS de la modale s'est correctement chargé");
 (function($){
 
 	/* Gestion de la modale  */

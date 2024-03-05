@@ -10,10 +10,10 @@
       <span class="lightboxReference"></span>
 
       <!-- Bouton pour fermer la lightbox -->
-      <img class="lightboxClose" src="<?= get_stylesheet_directory_uri() . '/assets/images/Cross_white.png'; ?>" alt="croix">
+      <img class="lightboxClose" src="<?= get_stylesheet_directory_uri() . '/assets/images/cross_white.png'; ?>" alt="croix">
 
       <!-- Texte pour la navigation vers la photo précédente -->
-      <span class="lightboxPrevious">&#8592; précédente</span>
+      <span class="lightboxPrevious">&#8592; Précédente</span>
 
       <!-- Div pour afficher la photo -->
       <div class="lightboxPhoto">
@@ -22,7 +22,7 @@
       </div>
 
       <!-- Texte pour la navigation vers la photo suivante -->
-      <span class="lightboxNext">suivante &#8594;</span>
+      <span class="lightboxNext">Suivante &#8594;</span>
     </div>
   </div>
 </div>

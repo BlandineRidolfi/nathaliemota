@@ -1,3 +1,5 @@
+// Ce message s'affichera dans la console lorsque le script JS sera chargé
+console.log("Le JS de la lightbox s'est correctement chargé");
 // Fonction principale exécutée lorsque le DOM est prêt
 $(function () {
     // Sélection des éléments du DOM nécessaires

@@ -1,3 +1,5 @@
+// Ce message s'affichera dans la console lorsque le script JS sera chargé
+console.log("Le JS du bouton charger plus s'est correctement chargé");
 // Fonction pour attacher des événements aux images chargées
 function attachEventsToImages() {
     // Votre logique d'attache d'événements ici

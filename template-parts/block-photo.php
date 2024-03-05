@@ -32,8 +32,9 @@ $categorie = $categories[0]->name;
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_eye.svg" alt="voir la photo">
             </a>
         </div>
-        <div class="icon-fullscreen" data-full="<?php echo esc_attr($id_photo); ?>" data-category="<?php echo esc_attr($categorie); ?>" data-reference="<?php echo esc_attr($reference); ?>">
+        <div class="icon-fullscreen" data-full="<?php echo esc_attr($photoId); ?>" data-category="<?php echo esc_attr($categorie); ?>" data-reference="<?php echo esc_attr($reference); ?>">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/fullscreen.svg" alt="Icone fullscreen">
         </div>
+
     </div>
 </div>

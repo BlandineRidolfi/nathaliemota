@@ -767,7 +767,7 @@ header .siteNavigation .siteNavigation__menu .navMenu li a:hover {
   }
 }
 .overlay h3 {
-  left: 490px;
+  left: 478px;
   top: 450px;
   display: none;
   /* Ajustements responsives */
@@ -913,6 +913,41 @@ h1 {
     opacity: 1;
   }
 }
+.blockCatalogue {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+  margin-top: 43px;
+  gap: 10px;
+}
+
+#viewMore {
+  display: block;
+  position: relative;
+  width: 270px;
+  height: 50px;
+  line-height: 100%;
+  margin: 30px auto 0;
+  background-color: #FFF;
+  font-family: space_monoregular;
+  font-weight: 400;
+  font-size: 12px;
+  border-radius: 2px;
+  border: none;
+  border-left: 4px solid #000000;
+}
+#viewMore:hover {
+  cursor: pointer;
+  background-color: black;
+  color: #FFF;
+  transition: background-color 0.6s ease-in, color 0.6s ease-in;
+}
+
+#moreImage {
+  width: 100%;
+}
+
 #filtrePhoto {
   padding-top: 50px;
   width: 1140px;
@@ -931,21 +966,14 @@ h1 {
     width: 715px;
   }
 }
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 480px) {
   #filtrePhoto {
     flex-direction: column;
-    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
     margin-bottom: 50px;
   }
-}
-
-.blockCatalogue {
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  justify-content: center;
-  margin-top: 43px;
-  gap: 10px;
 }
 
 .custom-select {
@@ -979,32 +1007,6 @@ h1 {
   margin-left: -270px;
 }
 
-#viewMore {
-  display: block;
-  position: relative;
-  width: 270px;
-  height: 50px;
-  line-height: 100%;
-  margin: 30px auto 0;
-  background-color: #FFF;
-  font-family: space_monoregular;
-  font-weight: 400;
-  font-size: 12px;
-  border-radius: 2px;
-  border: none;
-  border-left: 4px solid #000000;
-}
-#viewMore:hover {
-  cursor: pointer;
-  background-color: black;
-  color: #FFF;
-  transition: background-color 0.6s ease-in, color 0.6s ease-in;
-}
-
-#moreImage {
-  width: 100%;
-}
-
 .defaultOption:hover {
   background-color: #FFD6D6;
 }
@@ -1013,6 +1015,323 @@ h1 {
   font-family: PoppinsRegular;
   font-size: 20px;
   text-align: center;
+}
+
+/* Ajouter du CSS pour personnaliser Select2 */
+.select2-container--default .select2-selection--single {
+  border: 1px solid #ced4da; /* Couleur de la bordure */
+  border-radius: 4px; /* Coins arrondis */
+}
+
+/* Ajouter du CSS pour personnaliser Select2 */
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: transparent !important;
+  color: #000 !important;
+}
+
+.select2-container--default .select2-results__option:hover {
+  background-color: #FE5858 !important;
+  color: white !important;
+}
+
+.select2-container--default .select2-results__option:first-child {
+  background-color: #FFD6D6 !important;
+  color: #000 !important;
+}
+
+.select2-container--default .select2-results__option:not(:first-child)[aria-selected=true] {
+  background-color: #E00000 !important;
+  color: #fff !important;
+}
+
+/* Styles for the lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+/* Close button styles */
+.lightbox .lightboxClose {
+  position: absolute;
+  top: 40px;
+  right: 18%;
+  font-size: 23px;
+  cursor: pointer;
+  color: #fff;
+}
+@media screen and (max-width: 1140px) {
+  .lightbox .lightboxClose {
+    right: -8%;
+  }
+}
+
+/* Navigation button styles */
+.lightbox .lightboxPrevious,
+.lightbox .lightboxNext {
+  font-family: space_monoregular;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #fff;
+}
+@media screen and (max-width: 765px) {
+  .lightbox .lightboxPrevious,
+  .lightbox .lightboxNext {
+    top: 89%;
+  }
+}
+@media screen and (min-width: 200px) and (max-width: 300px) {
+  .lightbox .lightboxPrevious,
+  .lightbox .lightboxNext {
+    right: 0%;
+    top: 95%;
+  }
+}
+.lightbox .lightboxPrevious:hover,
+.lightbox .lightboxNext:hover {
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+/* Styles for the previous navigation button */
+.lightbox .lightboxPrevious {
+  left: 12%;
+}
+@media screen and (min-width: 765px) and (max-width: 1140px) {
+  .lightbox .lightboxPrevious {
+    left: -18%;
+    font-size: 25px;
+    z-index: 1;
+    top: 80%;
+  }
+  .lightbox .lightboxPrevious:hover {
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 765px) {
+  .lightbox .lightboxPrevious {
+    right: 0%;
+    left: 0%;
+    top: 95%;
+  }
+}
+@media screen and (min-width: 200px) and (max-width: 400px) {
+  .lightbox .lightboxPrevious {
+    top: 95%;
+    left: -11%;
+  }
+}
+
+/* Styles for the next navigation button */
+.lightbox .lightboxNext {
+  right: 15%;
+}
+@media screen and (min-width: 765px) and (max-width: 1140px) {
+  .lightbox .lightboxNext {
+    right: -16%;
+    font-size: 25px;
+    z-index: 1;
+    top: 80%;
+  }
+  .lightbox .lightboxNext:hover {
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 765px) {
+  .lightbox .lightboxNext {
+    right: 0%;
+    top: 95%;
+  }
+}
+@media screen and (min-width: 200px) and (max-width: 400px) {
+  .lightbox .lightboxNext {
+    top: 95%;
+    right: -8%;
+  }
+}
+
+/* Styles for the lightbox image */
+.lightboxImage {
+  width: 564px;
+  height: 495px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+}
+@media screen and (max-width: 1140px) {
+  .lightboxImage {
+    width: 100%;
+  }
+}
+
+/* Caption styles */
+.lightbox .lightbox-caption {
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Reference text styles */
+.lightboxReference {
+  font-family: PoppinsRegular;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  position: absolute;
+  text-transform: uppercase;
+  z-index: 1;
+  bottom: 110px;
+  left: 482px;
+  color: #fff;
+  width: 170px;
+  height: 21px;
+}
+@media screen and (min-width: 250px) and (max-width: 350px) {
+  .lightboxReference {
+    bottom: 62px;
+    left: 2px;
+    width: 80px;
+    z-index: 1;
+  }
+}
+@media screen and (min-width: 350px) and (max-width: 400px) {
+  .lightboxReference {
+    bottom: 62px;
+    left: 0px;
+    width: 80px;
+    z-index: 1;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 765px) {
+  .lightboxReference {
+    bottom: 80px;
+    left: 22px;
+    width: 80px;
+    z-index: 1;
+  }
+}
+@media screen and (min-width: 765px) and (max-width: 1024px) {
+  .lightboxReference {
+    bottom: 10px;
+    left: 17px;
+    width: 80px;
+    z-index: 1;
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1140px) {
+  .lightboxReference {
+    bottom: 15px;
+    width: 80px;
+    font-size: 22px;
+    left: 0px;
+  }
+}
+
+/* Category text styles */
+.lightboxCategorie {
+  font-family: space_monoregular;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: right;
+  position: absolute;
+  text-transform: uppercase;
+  z-index: 1;
+  bottom: 110px;
+  right: 482px;
+  color: #fff;
+}
+@media screen and (min-width: 250px) and (max-width: 350px) {
+  .lightboxCategorie {
+    bottom: 62px;
+    right: 10px;
+    z-index: 1;
+  }
+}
+@media screen and (min-width: 350px) and (max-width: 400px) {
+  .lightboxCategorie {
+    bottom: 62px;
+    right: 15px;
+    z-index: 1;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 765px) {
+  .lightboxCategorie {
+    bottom: 80px;
+    right: 20px;
+    z-index: 1;
+  }
+}
+@media screen and (min-width: 765px) and (max-width: 1024px) {
+  .lightboxCategorie {
+    bottom: 10px;
+    right: 15px;
+    z-index: 1;
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1140px) {
+  .lightboxCategorie {
+    bottom: 15px;
+    right: 15px;
+    font-size: 22px;
+  }
+}
+
+/* Styles for the lightbox photo */
+.lightboxPhoto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 564px;
+  height: 495px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+}
+@media screen and (max-width: 1140px) {
+  .lightboxPhoto {
+    width: 100%;
+  }
+}
+
+/* Styles for the lightbox content */
+.lightbox-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 1140px) {
+  .lightbox-content {
+    width: 70%;
+  }
 }
 
 @font-face {

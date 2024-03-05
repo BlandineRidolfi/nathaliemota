@@ -6,7 +6,7 @@
 	
 
     <section id="filtrePhoto">
-		<?php get_template_part('template-parts/photo-filtre'); ?>
+		<?php get_template_part('template-parts/filtres'); ?>
 	</section>
 
     <section id="photo__container" class="blockCatalogue">

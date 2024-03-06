@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
 
-    @media screen and (max-width: 770px) {
+    @media screen and (max-width: 920px) {
       width: 100%;
     }
   }
@@ -36,17 +36,21 @@
     justify-content: space-between;
     margin: auto;
 
-    @media screen and (max-width: 770px) {
-        width: 315px;
+    @media screen and (max-width: 1140px) {
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding-top: 22px;
+        gap: 10px;
     }
 
       @media screen and (min-width: 770px) and (max-width: 1140px) {
-        width: 715px;
+        //width: 715px;
     }
 
       @media screen and (max-width: 340px) {
-        margin-bottom: 50px;
+        //margin-bottom: 50px;
     }
   }
   
@@ -57,17 +61,30 @@
     align-items: center;
     gap: 20px;
 
-    @media screen and (max-width: 770px) {
-      flex-direction: column;
-      align-items: center;
-      gap: 0px;
-      width: 100%;
+    @media screen and (max-width: 1180px) {
+        padding-left: 50px;
+    }
+
+    @media screen and (max-width: 1140px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 0;
     }
   }
   
   /* Styles pour la section droite contenant 'Trier par' */
   .right-section {
     align-items: flex-end;
+
+    @media screen and (max-width: 1180px) {
+        padding-right: 50px;
+    }
+
+    @media screen and (max-width: 1140px) {
+        padding: 0;
+    }
   }
   
   /* Styles spécifiques pour le sélecteur 'Trier par' */

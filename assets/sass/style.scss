@@ -51,5 +51,9 @@ h2 {
         font-size: 40px;
         width: 415px;
     }
+
+    @media (max-width:1040px) {
+        font-size: 32px;
+    }
 }
 

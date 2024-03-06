@@ -1,20 +1,20 @@
 <?php get_header();?>
 
 <?php 
-/* Récupération des champs de groupe ACF */
 $photoId = get_field('photo');
 $reference = get_field('reference');
 $refUppercase = strtoupper($reference);
-
-// Récupération des termes de la taxonomie 'annee' associés à l'article
-$annees_terms = get_the_terms(get_the_ID(), 'annee');
-$annee = ($annees_terms && !is_wp_error($annees_terms)) ? $annees_terms[0]->name : 'Non défini';
 
 // Récupération des catégories de la photo principale
 $categories = get_the_terms(get_the_ID(), 'categorie');
 $categorie_name = $categories ? $categories[0]->name : '';
 $formats = get_the_terms(get_the_ID(), 'format');
 $FORMATS = $formats ? ucwords($formats[0]->name) : '';
+
+// Récupération des années de la taxonomie 'annee'
+$annees_terms = get_the_terms(get_the_ID(), 'annee');
+$annee = ($annees_terms && !is_wp_error($annees_terms)) ? $annees_terms[0]->name : 'Non défini';
+
 
 // Définition de l'URL des vignettes pour le post précédent et suivant
 $nextPost = get_next_post();
@@ -30,8 +30,7 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
             <div class="photo__container">
                 <img src="<?php echo esc_url($photoId); ?>" alt="<?php the_title_attribute(); ?>">
                 <div class="singlePhotoOverlay">
-                   
-                     <div class="icon__fullscreen" data-reference="<?php echo esc_attr($reference); ?>" data-full="<?php echo esc_url($photo_url); ?>" data-category="<?php echo esc_attr($categorie_name); ?>">
+                    <div class="icon__fullscreen" data-reference="<?php echo esc_attr($reference); ?>" data-full="<?php echo esc_url($photo_url); ?>" data-category="<?php echo esc_attr($categorie_name); ?>">
                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/fullscreen.svg" alt="Icone fullscreen">
                     </div>
                 </div>
@@ -41,11 +40,11 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
                 <h2><?php echo esc_html(get_the_title()); ?></h2>
             
                 <div class="photo__taxo">
-                    <p>RÉFÉRENCE    : <span id="single-reference"><?php echo esc_html($refUppercase); ?></p>
+                    <p>RÉFÉRENCE    : <span id="single-reference"><?php echo esc_html($refUppercase); ?></span></p>
                     <p>CATÉGORIE    : <?php echo esc_html($categorie_name); ?></p>
                     <p>FORMAT    : <?php echo esc_html($FORMATS); ?></p>
                     <p>TYPE    : <?php echo esc_html(get_field('type')); ?></p>
-                    <p>ANNÉE    : <?php echo esc_html($annee); ?></p>
+                    <p>ANNÉE: <?php echo esc_html($annee); ?></p>
                 </div>
             </div>
         </div>

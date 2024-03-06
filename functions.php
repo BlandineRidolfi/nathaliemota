@@ -22,7 +22,7 @@ function theme_enqueue_styles_and_scripts() {
     wp_enqueue_style('select2-css', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css', array());
 
     //Enqueue select.js
-    wp_enqueue_script('select-script', get_template_directory_uri() . '/js/select.js', array('jquery'), '1.0.0', true);
+    wp_enqueue_script('select-script', get_template_directory_uri() . '/js/custom-select.js', array('jquery'), '1.0.0', true);
 
     // Enqueue lightbox.js
     wp_enqueue_script('lightbox-script', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), '1.0.0', true);
@@ -109,67 +109,85 @@ add_action( 'after_setup_theme', 'enregistrement_nav_menus' );
   // Ajoute l'action AJAX pour les utilisateurs non connectés
   add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
 
-  /* Filtres */
+  // Fonction pour filtrer les photos via AJAX
+function filter_photos()
+{
+    // Vérifiez si l'action est définie
+    if (isset($_POST['action']) && $_POST['action'] == 'filter_photos') {
+        // Récupérez les filtres et nettoyez-les
+        $filter = array_map('sanitize_text_field', $_POST['filter']);
 
-  function filter_photos_function(){
-    $filter = $_POST['filter'];
+        // Ajoutez des messages de débogage pour voir les valeurs reçues
+        error_log('Filter values: ' . print_r($filter, true));
 
-    $args = array(
-        'post_type' => 'photo',
-        'posts_per_page' => -1,
-        'tax_query' => array(
-            'relation' => 'AND',
-        ),
-        'orderby' => 'date', // Tri par date par défaut
-        'order' => 'DESC',   // Ordre descendant par défaut
-    );
-
-    // Ajoute chaque filtre à la tax query si elle est définie
-    if (!empty($filter['categorie'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'categorie',
-            'field'    => 'slug',
-            'terms'    => $filter['categorie'],
-        );
-    }
-
-    if (!empty($filter['format'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'format',
-            'field'    => 'slug',
-            'terms'    => $filter['format'],
-        );
-    }
-
-    if (!empty($filter['annee'])) {
-        // Si une année spécifique est sélectionnée, ajoutez-la à la tax query
-        $args['tax_query'][] = array(
-            'taxonomy' => 'annee',
-            'field'    => 'slug',
-            'terms'    => $filter['annee'],
+        // Construisez votre requête WP_Query avec les filtres
+        $args = array(
+            'post_type'      => 'photo',
+            'posts_per_page' => -1,
+            'orderby'        => 'rand',
+            'order'          => 'ASC',
+            'tax_query'      => array(
+                'relation' => 'AND',
+            ),
         );
 
-        // Ajustez le tri en fonction de la taxonomie 'annee'
-        $args['orderby'] = 'taxonomy_annee'; // Assurez-vous que 'taxonomy_annee' correspond à la slug de la taxonomie 'annee'
-        $args['order'] = 'DESC'; // Vous pouvez ajuster l'ordre selon vos préférences
-    }
-
-    $query = new WP_Query($args);
-
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-
-            get_template_part('template-parts/block-photo', null);
+        // Ajoutez la taxonomie pour la catégorie si elle est spécifiée
+        if (!empty($filter['category'])) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'categorie',
+                'field'    => 'slug',
+                'terms'    => $filter['category'],
+            );
         }
-        wp_reset_postdata();
-    } else {
-        echo '<p class="critereFiltrage">Aucune photo ne correspond aux critères de filtrage</p>';
+
+        // Ajoutez la taxonomie pour l'année si elle est spécifiée
+        if (!empty($filter['years'])) {
+            $args['order'] = ($filter['years'] == 'date_desc') ? 'DESC' : 'ASC';
+        }
+
+        // Ajoutez la taxonomie pour le format si elle est spécifiée
+        if (!empty($filter['format'])) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'format',
+                'field'    => 'slug',
+                'terms'    => $filter['format'],
+            );
+        }
+
+        // Effectuez la requête WP_Query
+        $query = new WP_Query($args);
+
+        // Vérifiez si la requête a réussi
+        if ($query->have_posts()) {
+            // Boucle à travers les résultats de la requête
+            while ($query->have_posts()) :
+                $query->the_post();
+                // Récupérez et affichez les informations de chaque photo
+                $photoId      = get_post_thumbnail_id();
+                $reference    = get_field('reference');
+                $refUppercase = strtoupper($reference);
+
+                // Ajoutez des messages de débogage pour les champs ACF
+                error_log('Photo ID: ' . $photoId);
+                error_log('Reference: ' . $reference);
+
+                // Affiche le bloc de photo
+                get_template_part('template-parts/block-photo');
+            endwhile;
+
+            // Réinitialisez les données de requête après la boucle de requête
+            wp_reset_query();
+        } else {
+            // Aucune photo ne correspond aux critères de filtrage
+            echo '<p class="critereFiltrage">Aucune photo ne correspond aux critères de filtrage</p>';
+        }
     }
 
+    // Assurez-vous que votre code renvoie la sortie souhaitée pour le traitement AJAX
     die();
 }
 
-
-add_action('wp_ajax_filter_photos', 'filter_photos_function');
-add_action('wp_ajax_nopriv_filter_photos', 'filter_photos_function');
+// Hook pour les utilisateurs connectés
+add_action('wp_ajax_filter_photos', 'filter_photos');
+// Hook pour les utilisateurs non connectés
+add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');

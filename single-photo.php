@@ -28,12 +28,7 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
     <div class="photos__gallery">
         <div class="photo__detail">            
             <div class="photo__container">
-                <img src="<?php echo esc_url($photoId); ?>" alt="<?php the_title_attribute(); ?>">
-                <div class="singlePhotoOverlay">
-                    <div class="icon__fullscreen" data-reference="<?php echo esc_attr($reference); ?>" data-full="<?php echo esc_url($photo_url); ?>" data-category="<?php echo esc_attr($categorie_name); ?>">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/fullscreen.svg" alt="Icone fullscreen">
-                    </div>
-                </div>
+                <img src="<?php echo esc_url($photoId); ?>" alt="<?php the_title_attribute(); ?>"> 
             </div>
             
             <div class="photo__info">                
@@ -58,27 +53,24 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
             <button class="modale-contact" id="contact__button" data-reference="<?php echo $refUppercase; ?>">Contact</button>
         </div>
 
-        <div class="navPhotos">
-    <div class="navArrow">
-        <?php if (!empty($previousPost)) : ?>
-            <div class="arrowContainer">
-                <img class="arrow arrow__left" tabindex="0" src="<?php echo esc_url(get_theme_file_uri() . '/assets/images/arrow_left.png'); ?>" alt="Photo précédente" data-thumbnail-url="<?php echo esc_url($previousThumbnailURL); ?>" data-target-url="<?php echo esc_url(get_permalink($previousPost->ID)); ?>">
-                <div class="minaturePhoto" id="miniaturePhoto">
-                    <!-- Chargement de la photo miniature avec JS -->
-                </div>
-            </div>
-        <?php endif; ?>
+        <div class="naviguationPhotos">
 
-        <?php if (!empty($nextPost)) : ?>
-            <div class="arrowContainer">
-                <img class="arrow arrow__right" tabindex="0" src="<?php echo esc_url(get_theme_file_uri() . '/assets/images/arrow_right.png'); ?>" alt="Photo suivante" data-thumbnail-url="<?php echo esc_url($nextThumbnailURL); ?>" data-target-url="<?php echo esc_url(get_permalink($nextPost->ID)); ?>">
-                <div class="minaturePhoto" id="miniaturePhoto">
-                    <!-- Chargement de la photo miniature avec JS -->
-                </div>
-            </div>
-        <?php endif; ?>
-    </div>
-</div>
+      	<!-- Conteneur pour la miniature -->
+      	<div class="miniPicture" id="miniPicture">
+      	  <!-- La miniature sera chargée ici par JavaScript -->
+      	</div>
+
+      	<div class="naviguationArrow">
+      	 <?php if (!empty($previousPost)) : ?>
+      	     <img class="arrow arrow-left" src="<?php echo get_theme_file_uri() . '/assets/images/left.png'; ?>" alt="Photo précédente" data-thumbnail-url="<?php echo $previousThumbnailURL; ?>" data-target-url="<?php echo esc_url(get_permalink($previousPost->ID)); ?>">
+      	 <?php endif; ?>
+
+      	 <?php if (!empty($nextPost)) : ?>
+      	    <img class="arrow arrow-right" src="<?php echo get_theme_file_uri() . '/assets/images/right.png'; ?>" alt="Photo suivante" data-thumbnail-url="<?php echo $nextThumbnailURL; ?>" data-target-url="<?php echo esc_url(get_permalink($nextPost->ID)); ?>">
+      	 <?php endif; ?>
+      	</div>
+
+      </div>
     </div>
 </section>
 

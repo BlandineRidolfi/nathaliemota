@@ -222,93 +222,84 @@
 
 /* Styles pour l'affichage des vignettes au survol des flèches */
 
-.navPhotos {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 50%;
-    height: 118px;
-    @media screen and (max-width: 820px) {
-		display: none;
+.naviguationPhotos {
+	width: 50%;
+	height: 118px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	@media screen and (max-width: 820px) {
+		display:none;
 	}
 }
 
-.navArrow {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    width: 81px;
-    margin-bottom: 10px;
-    height: 118px;
-    right: 86px;
+.naviguationArrow {
+	width: 81px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	position: relative;
+	margin-bottom: 10px;
+	height: 118px;
 
+	.arrow {
+	 	width: 25px;
+	 	height: auto;
 
+	 	background-size: cover;
+	 	background-position: center;
+	 	display: inline-block;
 
+	 	&:hover + .miniPicture {
+	 		display: flex !important;
+	 	}
 
-    .arrow {
-        width: 25px;
-        height: auto;
-        background-size: cover;
-        background-position: center;
-        display: inline-block;
-        transition: opacity 0.5s ease, cursor 0.5s ease; /* Ajout de la transition */
-        cursor: pointer;
-        margin: 0 5px; /* Ajout d'une marge de 5px de chaque côté */
-        padding-left: 50px;
-
-        &:hover + .minaturePhoto,
-        &:hover + .minaturePhoto-left,
-        &:hover + .minaturePhoto-right,
-        &:focus + .minaturePhoto,
-        &:focus + .minaturePhoto-left,
-        &:focus + .minaturePhoto-right {
-            visibility: visible;
-            opacity: 1;
-            transition: opacity 0.5s ease; /* Ajout de la transition */
-        }
-    }
+	 	.arrow-left {
+	 		top: 10px;
+	 		position: relative;
+	  }
+	  .arrow-right{
+	  	top: 10px;
+	  	position: relative;
+	  }
+	}
 }
 
-.minaturePhoto-content,
-.minaturePhoto,
-.minaturePhoto-left,
-.minaturePhoto-right {
-    visibility: hidden;
-    opacity: 0;
-    position: relative;
-    height: 71px;
-    width: 81px;
-   
-    transition: visibility 0.5s ease, opacity 0.5s ease;
-
-    a {
-        display: block;
-        width: 100%;
-        height: 100%;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-
-    &:hover,
-    &:focus {
-        visibility: visible;
-        opacity: 1;
-    }
+.miniPicture-content {
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s, visibility 0.3s;
 }
 
-.arrowContainer {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 13px;
+.miniPicture,
+.miniPicture-left,
+.miniPicture-right {
+	visibility: hidden; // au lieu de display: none;
+	opacity: 0;
+	position: relative;
+  height: 71px;
+  width: 81px;
+  top: 8px;
+  transition: visibility 0,3s, opacity 0.3s linear; // Transition pour un effet de fondu
+
+  a {
+		display: block;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
-
-
+  .arrow:hover + .miniPicture,
+  .arrow:hover + .miniPicture-left,
+  .arrow:hover + .miniPicture-right {
+    visibility: visible;
+    opacity: 1;
+  }     
 
 
 .interested {

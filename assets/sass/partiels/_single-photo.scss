@@ -242,7 +242,7 @@
     width: 81px;
     margin-bottom: 10px;
     height: 118px;
-    right: 81px;
+    right: 86px;
 
 
 
@@ -256,6 +256,7 @@
         transition: opacity 0.5s ease, cursor 0.5s ease; /* Ajout de la transition */
         cursor: pointer;
         margin: 0 5px; /* Ajout d'une marge de 5px de chaque côté */
+        padding-left: 50px;
 
         &:hover + .minaturePhoto,
         &:hover + .minaturePhoto-left,

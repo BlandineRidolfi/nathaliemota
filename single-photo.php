@@ -79,11 +79,6 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
         <?php endif; ?>
     </div>
 </div>
-
-
-
-
-
     </div>
 </section>
 

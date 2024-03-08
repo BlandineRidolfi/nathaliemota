@@ -1,72 +1,78 @@
-/** STYLE CSS DU HERO HEADER **/
+                                 /************************************/                                
+                                /***** STYLE CSS DU HERO HEADER *****/
+                               /************************************/
 
+
+
+/* Style du conteneur du hero */
 .hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 900px; /* Hauteur par défaut */
 
-    @media screen and (max-width: 770px) {
-        height: 250px;
-        padding-top: 100px;
-    }
+  @media screen and (max-width: 770px) {
+      height: 250px; /* Ajustement de la hauteur pour les écrans plus petits */
+      padding-top: 100px; /* Ajustement de l'espacement en haut */
+  }
 
-    & img {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-size: cover;
-        background-position: center;
-        object-fit: cover;
-        top: 3px;
-        animation: fadeIn 2s;
-    }
+  & img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-size: cover;
+      background-position: center;
+      object-fit: cover;
+      top: 3px;
+      animation: fadeIn 2s; /* Animation de fondu en entrée */
+  }
 }
 
 @keyframes fadeIn {
-    0% {
-      transform: translateY(-200px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
   }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-  h1 {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	width: 85%;
-	height: 10%;
-	font-family: "space_monobold_italic", sans-serif;
-	font-style: italic;
-	font-weight: 700;
-	font-size: 6vw;
-	line-height: 10vh;
-	text-transform: uppercase;
-	color: transparent;
-	-webkit-text-stroke: 3px #ffffff;
-	-webkit-text-fill-color: transparent;
-	z-index: 1;
-	
-	animation: fadeOut 2s;
+/* Style du titre dans le héros */
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 85%;
+  height: 10%;
+  font-family: "space_monobold_italic", sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 6vw;
+  line-height: 10vh;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 3px #ffffff; /* Contour du texte */
+  -webkit-text-fill-color: transparent;
+  z-index: 1;
+  
+  animation: fadeOut 2s; /* Animation de fondu en sortie */
 
-	@media screen and (max-width: 770px) {
-	-webkit-text-stroke: 1px #ffffff;
-	}
+  @media screen and (max-width: 770px) {
+      -webkit-text-stroke: 1px #ffffff; /* Ajustement du contour du texte pour les écrans plus petits */
+  }
 }
 
 @keyframes fadeOut {
-    0% {
-      transform: translateY(200px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  0% {
+    transform: translateY(200px);
+    opacity: 0;
   }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

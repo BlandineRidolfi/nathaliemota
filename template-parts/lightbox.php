@@ -1,8 +1,10 @@
+                                                <!-- PARTIE LIGHTBOX SUR LES PHOTOS -->
+
 <div class="containerLightbox">
   <!-- Conteneur principal de la lightbox -->
   <div id="lightbox" class="lightbox">
     <!-- Div pour le contenu de la lightbox -->
-    <div class="lightbox-content">
+    <div class="lightboxContent">
       <!-- Section pour afficher la catégorie de la photo -->
       <span class="lightboxCategorie"></span>
 

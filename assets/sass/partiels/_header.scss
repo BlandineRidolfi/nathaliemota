@@ -1,6 +1,7 @@
-/* CSS HEADER */
-
-header  {
+                                                  /**********************/
+                                                 /***** CSS HEADER *****/
+                                                /**********************/
+header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -17,11 +18,9 @@ header  {
         position: relative;
         width: 100%;
 
-        .siteNavigation__logo {
-            img {
-                width: 215px;
-                height: 15px;
-            }
+        .siteNavigation__logo img {
+            width: 215px;
+            height: 15px;
         }
 
         .siteNavigation__menu {
@@ -38,7 +37,6 @@ header  {
                     font-size: 16px;
                     text-transform: uppercase;
 
-
                     a {
                         color: black;
                         text-decoration: none;
@@ -49,18 +47,17 @@ header  {
                         }
                     }
                 }
-            }    
+            }
         }
     }
 }
 
-/** BURGER **/
-
+/* Menu BURGER */
 @media screen and (max-width: 768px) {
     #wpadminbar {
         display: none;
     }
-    
+
     header {
         position: fixed;
         top: 0;
@@ -106,6 +103,7 @@ header  {
                     }
                 }
             }
+
             .siteNavigation__menu {
                 display: flex !important;
                 flex-direction: column;
@@ -119,16 +117,16 @@ header  {
                 max-height: 0;
                 overflow: hidden;
                 opacity: 0;
-                transition: max-height 1.2s ease-in-out, opacity 1.2s ease-in-out; /* Ajoutez la transition */
+                transition: max-height 1.2s ease-in-out, opacity 1.2s ease-in-out;
 
                 &.open {
-                    max-height: 40vh; /* Ajustez la hauteur maximale à la valeur souhaitée */
-                    opacity: 1; /* Affichez le contenu en augmentant l'opacité à 1 */
+                    max-height: 40vh;
+                    opacity: 1;
                 }
 
                 &.close {
-                    animation: closeNav 1.5s ease-in-out 0s forwards; /* Nouvelle animation pour la fermeture */
-                    -webkit-animation: closeNav 1.5s ease-in-out 0s forwards; /* Nouvelle animation pour la fermeture */
+                    animation: closeNav 1.5s ease-in-out 0s forwards;
+                    -webkit-animation: closeNav 1.5s ease-in-out 0s forwards;
                 }
 
                 .navMenu {
@@ -139,9 +137,7 @@ header  {
                     padding-inline: 0;
 
                     li {
-                        font: {
-                            size: 44px !important;
-                        }
+                        font-size: 44px !important;
 
                         a {
                             color: #FFF !important;
@@ -169,26 +165,21 @@ header  {
     }
 }
 
-
 @keyframes closeNav {
-    0% {
-        max-height: 40vh; 
+    0%, 100% {
+        max-height: 40vh;
         opacity: 1;
     }
 
     80% {
         max-height: 0;
-    }
-
-    100% {
         opacity: 0;
-        max-height: 0;
     }
 }
 
-/* Tablette */
-@media only screen and (min-width: 768px) and (max-width: 960px){
+/* Ajustement pour la tablette */
+@media only screen and (min-width: 768px) and (max-width: 960px) {
     header {
         padding-inline: 55px;
-}
+    }
 }

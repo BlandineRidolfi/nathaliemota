@@ -1,4 +1,7 @@
-// CSS Popup modale
+                            /*************************************/
+                           /***** CSS PARTIE MODALE CONTACT *****/
+                          /*************************************/
+
 .popup__overlay {
     display: none;
     position: fixed;
@@ -18,7 +21,8 @@
       width: 80%;
       padding: 15px 0;
       border: 5px solid #000000;
-  
+      
+      // Styles spécifiques à la fermeture modale
       .popup-title__container {
         .popup__close {
           position: absolute;
@@ -27,7 +31,7 @@
           cursor: pointer;
           transition: all 0.4s ease;
   
-          // Styles spécifiques à la fermeture modale
+          
         }
   
         img {

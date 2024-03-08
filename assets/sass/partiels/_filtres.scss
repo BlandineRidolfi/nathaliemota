@@ -1,8 +1,6 @@
-/******************************************************************/
-/*  FILTRES FRONT-PAGE ********************************************/
-/******************************************************************/
-
-
+                                       /***************************************/                                      
+                                      /****** CSS de la partie filtres *******/
+                                     /***************************************/
 
 .filtre {
     margin-bottom: 40px;
@@ -55,7 +53,7 @@
   }
   
   /* Styles pour la section gauche contenant 'Catégorie' et 'Format' */
-  .left-section {
+  .left-filter {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -75,7 +73,7 @@
   }
   
   /* Styles pour la section droite contenant 'Trier par' */
-  .right-section {
+  .right-filter {
     align-items: flex-end;
 
     @media screen and (max-width: 1180px) {

@@ -1,3 +1,5 @@
+									<!-- FRONT PAGE -->
+
 <?php get_header();?>
 
 
@@ -15,7 +17,7 @@
 		 
 	</section>
 
-    <!-- Partie bouton pour charger plus de photos -->
+    <!-- Bouton pour charger plus de photos -->
 		 <div id="moreImage">
         <button id="viewMore" data-offset= "8" data-url="">Charger plus</button>
     </div>

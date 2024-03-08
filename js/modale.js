@@ -1,41 +1,39 @@
-// Ce message s'affichera dans la console lorsque le script JS sera chargé
+                                  // JS DE LA PARTIE MODALE
+                                  
 console.log("Le JS de la modale s'est correctement chargé");
-(function($){
 
-	/* Gestion de la modale  */
+(function ($) {
 
-	$(".modale-contact").on("click", (event) => {
-		event.preventDefault();
-		//console.log("Clic détecté sur .modale-contact");
-		$(".popup__overlay").css("display", "flex");
-    });
+  // Fonction pour ouvrir la modale
+  function openModal() {
+    $(".popup__overlay").css("display", "flex");
+  }
 
-	$(".popup__overlay").on("click", function(event){
-		if (event.target !== this) return;
-		//console.log("Clic détecté sur .popup__overlay"); 
-		$(".popup__overlay").css("display", "none");
-	}); 
+  // Fonction pour fermer la modale
+  function closeModal() {
+    $(".popup__overlay").css("display", "none");
+  }
 
-	/* Je récupère la référence de la photo depuis le bouton contact vers la modale */
-    const modaleOverlay = $(".popup__overlay");
-    // Ajoute un gestionnaire d'événement au clic sur la fenêtre
-    $(window).on("click", function (event) {
-        // Vérifie si l'élément cliqué est l'overlay de la modale
-        if ($(event.target).is(modaleOverlay)) {
-        closeModal();
-        }
-    });
-    // Fonction pour ouvrir la modale
-    function openModal() {
-        modaleOverlay.css("display", "flex");
+  // Gestion du clic sur le bouton de contact
+  $(".modale-contact").on("click", function (event) {
+    event.preventDefault();
+    $("#referencePhoto").val($('#single-reference').html());
+    openModal();
+  });
+
+  // Gestion du clic en dehors de la modale pour la fermer
+  $(".popup__overlay").on("click", function (event) {
+    if (event.target === this) {
+      closeModal();
     }
-    // Fonction pour fermer la modale
-    function closeModal() {
-        modaleOverlay.css("display", "none");
+  });
+
+  // Ajoute un gestionnaire d'événement au clic sur la fenêtre
+  $(window).on("click", function (event) {
+    // Vérifie si l'élément cliqué est l'overlay de la modale
+    if ($(event.target).is(".popup__overlay")) {
+      closeModal();
     }
-    $(".modale-contact").on("click", function (event){
-        event.preventDefault();
-        $("#referencePhoto").val($('#single-reference').html());
-        openModal();
-    })
+  });
+
 })(jQuery);

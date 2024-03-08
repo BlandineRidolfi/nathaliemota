@@ -1,6 +1,8 @@
+                                  <!-- PARTIE FILTRES DE LA PAGE D'ACCUEIL -->
+
 <?php
-// Affichage des taxonomies
-$taxonomy = [
+// Définition des taxonomies
+$taxonomy_labels = [
     'categorie' => 'CATÉGORIES',
     'format' => 'FORMATS',
     'annees' => 'TRIER PAR',
@@ -9,30 +11,31 @@ $taxonomy = [
 // Début du conteneur #filtrePhoto
 echo "<div id='filtrePhoto'>";
 
-// Section gauche
-echo "<div class='left-section filter-container' id='left-section'>";
+// Section de gauche avec les filtres catégorie et format
+echo "<div class='left-filter filter-container' id='left-filter'>";
 
-foreach ($taxonomy as $taxonomy_slug => $label) {
-    // Exclure 'annees' de la section gauche
+// Boucle sur les taxonomies pour la section gauche (catégorie et format)
+foreach ($taxonomy_labels as $taxonomy_slug => $label) {
+    // Je retire 'annees' de la section gauche
     if ($taxonomy_slug !== 'annees') {
-        // Récupérer les termes de la taxonomie
+        // Je récupére les termes de la taxonomie
         $terms = get_terms($taxonomy_slug);
 
-        // Vérifier si des termes existent et qu'il n'y a pas d'erreur WordPress
+        // Je vérifie si des termes existent et qu'il n'y a pas d'erreur WordPress
         if ($terms && !is_wp_error($terms)) {
-            // Ajouter une classe CSS spécifique pour chaque select
+            // J'ajoute une classe CSS spécifique pour chaque select
             $select_class = 'custom-select ' . $taxonomy_slug . '-select';
 
             // Début du conteneur pour la taxonomie
             echo "<div class='taxonomy-container'>";
             // Début de la balise label
             echo "<label for='$taxonomy_slug'>";
-            // Afficher le select avec l'ID et la classe appropriés
+            // J'affiche le select avec l'ID et la classe appropriée
             echo "<select id='$taxonomy_slug' class='$select_class'>";
             // Option par défaut avec le label de la taxonomie
             echo "<option value=''>$label</option>";
 
-            // Afficher chaque terme comme une option
+            // J'affiche chaque terme comme une option
             foreach ($terms as $term) {
                 echo "<option value='$term->slug'>$term->name</option>";
             }
@@ -47,21 +50,21 @@ foreach ($taxonomy as $taxonomy_slug => $label) {
     }
 }
 
-// Fin de la section gauche
+// Fin de la section de gauche avec les filtres catégorie et format
 echo "</div>";
 
-// Section droite
-echo "<div class='right-section filter-container' id='right-section'>";
+// Section de droite du filtre trier par
+echo "<div class='right-filter filter-container' id='right-filter'>";
 // Classe CSS spécifique pour la taxonomie 'annees'
 $select_class_annees = 'custom-select annees-select';
 // Début du conteneur pour la taxonomie 'annees'
 echo "<div class='taxonomy-container'>";
 // Début de la balise label
 echo "<label for='annees'>";
-// Afficher le select avec l'ID et la classe appropriés
+// J'affiche le select avec l'ID et la classe appropriée
 echo "<select id='annees' class='$select_class_annees'>";
 // Option par défaut avec le label de la taxonomie 'annees'
-echo "<option value=''>{$taxonomy['annees']}</option>";
+echo "<option value=''>{$taxonomy_labels['annees']}</option>";
 // Options spécifiques pour 'annees'
 echo "<option value='date_asc'>A partir des plus récentes</option>";
 echo "<option value='date_desc'>A partir des plus anciennes</option>";
@@ -71,8 +74,8 @@ echo "</select>";
 echo "</label>";
 // Fin du conteneur pour la taxonomie 'annees'
 echo "</div>";
-// Fin de la section droite
+// Fin de la section de droite avec le filtre trier par
 echo "</div>";
 
-
-
+// Fin du conteneur #filtrePhoto
+echo "</div>";
